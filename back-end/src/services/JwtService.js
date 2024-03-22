@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 
  const genneralAccessToken = async (payload) => {
-    console.log('payload', payload)
     const access_token = jwt.sign({
         payload
     }, 'access_token', {expiresIn: '1h'})
@@ -9,7 +8,17 @@ const jwt = require('jsonwebtoken')
     return access_token
 }
 
+const genneralRefreshToken = async (payload) => {
+    console.log('payload', payload)
+    const access_token = jwt.sign({
+        payload
+    }, 'refresh_token', {expiresIn: '365d'})
+    
+    return access_token
+}
+
 module.exports = {
-    genneralAccessToken
+    genneralAccessToken,
+    genneralRefreshToken
 
 }
