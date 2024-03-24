@@ -20,6 +20,9 @@
     --bg-color: #f9f6f2;
     --container-color:#f8e4be;
     --font-family-2:"Playfair Display", serif;
+    --primary-color: #EE4D2D;
+    --white-color: #fff;
+
     
 }
 
@@ -93,7 +96,7 @@ header{
     font-size: 1.8rem;
     font-weight: 700;
     font-family: var(--popins-font);
-    color:#060414 ;
+    color:#060414;
  
 }
 
@@ -104,8 +107,12 @@ header{
 }
 
 .navbar-icons .bx{
+    color: #060414;
     font-size: 25px ;
     
+}
+.navbar-icons .bx:hover {
+    color: var(--bg-color);
 }
 
 
@@ -740,4 +747,147 @@ header{
     .book-data h2{
         font-size: 1.4rem;
     }
+}
+
+@keyframes growth {
+    from {
+        transform : scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+/* login */
+
+.modal {
+position: fixed;
+top: 0px;
+right: 0;
+bottom: 0;
+left: 0;
+display: none;
+z-index: 999;
+animation: fadeIn linear 0.1s;
+}
+
+
+.modal__overlay {
+position: absolute;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.4);
+
+}
+
+.modal_body  {
+--growth-from :0.5;
+--growth-to : 1;
+width: 500px;
+height: 300px;
+top: 80px;
+background-color: #f8e4be;
+margin: auto;
+position: relative;
+z-index: 1;
+border-radius: 5px;
+animation: growth linear 0.1s;
+}
+
+.auth-form {
+
+width: 500;
+display: block;
+}
+.auth-form__container {
+border-top: 16px;
+padding: 16px 32px;
+}
+
+.auth-form__header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.auth-form__heading {
+font-size: 2.2rem;
+font-weight: 400;
+color: var(--text-color);
+}
+
+.auth-form__swtich-btn {
+border: none;
+background-color: #f8e4be ;
+font-size: 1.6rem;
+font-weight: 400;
+color: var(--primary-color);
+cursor: pointer;
+}
+
+.auth-form__form{
+
+}
+.auth-form__input {
+
+width: 100%;
+height: 25px;
+margin-top: 16px;
+padding: 0 12px;
+font-size: 1.4rem;
+border-radius: 2px;;
+border: 1px solid #dbdbdb;
+outline: none;
+}
+.auth-form__input:focus {
+border-color: #888;
+}
+
+.auth-form__controls_lg{
+margin-top: 44px;
+
+}
+.auth-form__controls {
+margin-top: 16px;
+}
+
+.btn--primary {
+min-width: 142px;
+height: 36px;
+color: var(--white-color);
+background-color: var(--primary-color);
+text-decoration: none;
+border: none;
+border-radius: 2px;
+font-size: 1.4rem;
+padding: 0;
+outline: none;
+cursor: pointer;
+justify-content: center;
+line-height: 1.6rem;
+}
+
+
+.btn--primary.btn--disabled{
+color: #ccc;
+cursor: default;
+background-color: #c3c3c3;
+
+}
+.auth-form__aside {
+float: right;
+}
+
+.auth-form__help {
+display: block; 
+justify-content: flex-end;
+margin-top: 12px;
+
+}
+
+.auth-form__help-link {
+align-self: flex-end;
+text-decoration: none;
+font-size: 1.4rem;
+color: var(--primary-color);
 }
