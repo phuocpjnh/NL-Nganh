@@ -164,6 +164,8 @@ const getDetailsUser = (id) => {
         }
     })
 }
+
+
 module.exports = {
     createUser,
     loginUser,
@@ -171,4 +173,5 @@ module.exports = {
     deleteUser,
     getAllUser ,
     getDetailsUser
+   
 }
