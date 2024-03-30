@@ -35,6 +35,25 @@ var swiper = new Swiper(".mySwiper", {
     delay: '400',
   });
 
+  
+document.addEventListener('DOMContentLoaded', function() {
+  const card = document.querySelector('.card');
+  const closeShopingButton = document.querySelector('.closeShoping');
+  const showCardButton = document.getElementById('showCardButton');
+  const addToCartButtons = document.querySelectorAll('.addToCart');
+  // Bắt sự kiện click vào nút "Close" để ẩn `.card`
+  closeShopingButton.addEventListener('click', function() {
+      card.style.display = 'none'; // Ẩn `.card`
+      
+  });
+  showCardButton.addEventListener('click', function() {
+    card.style.display = 'block'; // Hiển thị `.card`
+  });
+
+  
+});
+
+
   // login
   document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
@@ -92,9 +111,24 @@ var swiper = new Swiper(".mySwiper", {
          
       }
   });
-
-   
+  modalOverlay.addEventListener('click', function(event) {
+    // Kiểm tra xem click có diễn ra bên ngoài cả hai form không
+    if (loginModal.contains(event.target)) {
+        // Ẩn cả form đăng nhập và đăng ký khi click bên ngoài form modal
+        loginModal.style.display = 'none';
+       
+    }
 });
+
+});
+
+ const btn = document.querySelectorAll("button")
+ btn.forEach(function(button,index){
+  button.addEventListener("click",function(event){
+    
+  })
+ })
+
 
 
   animate.reveal(".nav");

@@ -27,11 +27,16 @@
                     <a href="#review" class="nav-link">Đánh Giá</a>
                 </div>
                 <div class="navbar-icons">
-                    <a href="cart.html"></a><i class='bx bx-shopping-bag'></i></li></li>
+                    <div class="shopping">
+                        <a href="cart.html"> </a>
+                        <i id="showCardButton" class='bx bx-shopping-bag'></i>
+                        <span class="quality">0</span>
+                       
+                    </div>
                     <a href="#loginForm">
                         <i class='bx bx-user'></i> </li>
                     </a>
-
+                    
                     
                     <div class="menu-icon">
                         <div class="line1"></div>
@@ -41,6 +46,7 @@
                 </div>
             </section>
         </header>
+   
     <section class="home container" id="home">
         <div class="home-text"> 
             <h4>Những hạt coffee</h4>
@@ -54,70 +60,18 @@
            
         </div>
     </section>
-    <div class="modal" id="loginModal">
-        <div class="modal__overlay"></div>
-        <div class="modal_body">
-                <!-- register -->
-                <div class="auth-form" id="registerForm" >
-                    <div class="auth-form__container">
-                        <div class="auth-form__header">
-                            <h3 class="auth-form__heading">Đăng ký</h3>
-                            <button class="auth-form__swtich-btn">Đăng nhập</button>
-                            
-                        </div>
-                        <div class="auth-form__form">
-                            <div class="auth-form__group">
-                                <input type="text" id="username" class="auth-form__input" placeholder="Tên đăng nhập">
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="text" id="email" class="auth-form__input" placeholder="Email">
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="password" id="password" class="auth-form__input" placeholder="Mật khẩu">
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="password"  id="confirmPassword" class="auth-form__input" placeholder="Nhập lại mật khẩu">
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="text" id="phone" class="auth-form__input" placeholder="Số điện thoại">
-                            </div>
-                        </div>
-                       
-                        <div class="auth-form__controls">
-                            <button type="submit" id="registerButton" class="btn--primary .btn--disabled">ĐĂNG KÝ</button> 
-                        </div>
-                    </div>
-                </div> 
-
-                <!--login  -->
-                <div class="auth-form" id="loginForm">
-                    <div class="auth-form__container">
-                        <div class="auth-form__header">
-                            <h3 class="auth-form__heading">Đăng nhập</h3>
-                            <button class="auth-form__swtich-btn">Đăng ký</button>
-                        </div>
-                        <div class="auth-form__form">
-                            <div class="auth-form__group">
-                                <input type="text" id="username" class="auth-form__input" placeholder="Tên đăng nhập/SĐT">
-                            </div>
-                            <div class="auth-form__group">
-                                <input type="password" id="password" class="auth-form__input" placeholder="Mật khẩu">
-                            </div>
-                        </div>
-                        <div class="auth-form__aside">
-                            <div class="auth-form__help">
-                                <a href="" class="auth-form__help-link ">Quên mật khẩu</a>
-                            </div>
-                        </div>
-                        <div class="auth-form__controls_lg">
-                            <button type="submit" id="loginButton" class="btn--primary .btn--disabled">ĐĂNG NHẬP</button> 
-                        </div>
-                    </div>
-                </div> 
-
+    <section class="shoping">
+         <div class="list"></div>
+        <div class="card">
+            <h1>Giỏ Hàng</h1>
+            <ul class="listcard"></ul>
+            <div class="checkout">
+                <div class="total">0</div>
+                <div class="closeShoping">Close</div>
+            </div>
         </div>
-    </div>
-
+    </section>
+       
     <section class="services container" id="services">
         <div class="heading">
             <h2>
@@ -163,7 +117,8 @@
                 <h2>Coffee Hoà Tan</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button> <i class="bx bx-shopping-bag addToCart"></i></button>
+                   
                 </div>
             </div>
 
@@ -174,7 +129,7 @@
                 <h2>Coffee Đen</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button> <i class="bx bx-shopping-bag addToCart"></i></button>
                    
                 </div>
             </div>
@@ -186,7 +141,7 @@
                 <h2>Latte</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button> <i class="bx bx-shopping-bag addToCart"></i></button>
                 </div>
             </div>
 
@@ -197,7 +152,7 @@
                 <h2>Cappuccino</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button> <i class="bx bx-shopping-bag addToCart"></i></button>
                 </div>
             </div>
             
@@ -208,7 +163,7 @@
                 <h2>Espresso</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button> <i class="bx bx-shopping-bag addToCart"></i></button>
                 </div>
             </div>
 
@@ -219,7 +174,7 @@
                 <h2>Coffee Mocha</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button> <i class="bx bx-shopping-bag addToCart"></i></button>
                 </div>
             </div>
         </div>
