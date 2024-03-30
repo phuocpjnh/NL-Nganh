@@ -62,6 +62,20 @@ header{
     font-family: var(--popins-font);
     border-radius: 2rem;
 }
+header span{
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    right: 80px;
+    padding: 3px 10px;
+    font-size: 8px;
+
+}
 
 .navbar{
     display: flex;
@@ -784,7 +798,7 @@ background-color: rgba(0,0,0,0.4);
 --growth-from :0.5;
 --growth-to : 1;
 width: 500px;
-height: 300px;
+height: 350px;
 top: 80px;
 background-color: #f8e4be;
 margin: auto;
@@ -825,9 +839,9 @@ color: var(--primary-color);
 cursor: pointer;
 }
 
-.auth-form__form{
+/* .auth-form__form{
 
-}
+} */
 .auth-form__input {
 
 width: 100%;
@@ -890,4 +904,86 @@ align-self: flex-end;
 text-decoration: none;
 font-size: 1.4rem;
 color: var(--primary-color);
+}
+
+.list{
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   column-gap: 20px;
+   row-gap: 20px;
+   margin: 50px;
+}
+
+
+.card {
+        position: fixed;
+        top: 80px;
+        right: 0;
+        width: 300px;
+        background-color: #453E3B;
+        height: 500px;
+        overflow-y: auto;
+        transition: 0.5s;
+        z-index: 999;
+        display: none;
+}
+.card.show {
+    display: block; 
+}
+
+
+.card h1{
+    color: #E8BC0E;
+    font-weight: 100;
+    margin: 0;
+    padding: 0 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+   
+}
+
+.card .checkout{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    font-size: 16px;
+}
+
+.card .checkout div{
+    background-color: #E8BC0E;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+.card .checkout div:nth-child(2){
+    background-color: #1C1f25;
+    color: #fff ;
+}
+.checkout {
+    top: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+}
+
+
+
+
+.active .card {
+    left: calc(100% - 500px);
+}
+.active .container {
+    transform: translateX(-200px) ;
+}
+.list .item{
+    text-align: center;
 }
