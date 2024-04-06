@@ -87,26 +87,70 @@ var swiper = new Swiper(".mySwiper", {
          
       }
   });
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var showCardButton = document.getElementById("showCardButton");
+    var shopingSection = document.querySelector(".shoping");
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const card = document.querySelector('.card');
-    const closeShopingButton = document.querySelector('.closeShoping');
-    const showCardButton = document.getElementById('showCardButton');
+    // Thêm sự kiện click vào biểu tượng mua sắm
+    showCardButton.addEventListener("click", function() {
+        // Kiểm tra xem phần giỏ hàng đang hiển thị hay không
+        var isHidden = shopingSection.classList.contains("hidden");
 
-    // Bắt sự kiện click vào nút "Close" để ẩn `.card`
-    closeShopingButton.addEventListener('click', function() {
-        card.style.display = 'none'; // Ẩn `.card`
-    });
-
-    // Bắt sự kiện click vào nút "Mở Card" để hiển thị `.card`
-    showCardButton.addEventListener('click', function() {
-        card.style.display = 'block'; // Hiển thị `.card`
+        // Nếu đang ẩn, hiển thị phần giỏ hàng
+        if (isHidden) {
+            shopingSection.classList.remove("hidden");
+        } else {
+            // Nếu đang hiển thị, ẩn đi phần giỏ hàng
+            shopingSection.classList.add("hidden");
+        }
     });
   });
-   
+const showCardButton = document.getElementById('showCardButton');
+const card = document.querySelector('.card');
+const closeShoping = document.querySelector('.closeShoping');
+
+showCardButton.addEventListener('click', function() {
+  
+  card.style.display = 'block';
+});
+closeShoping.addEventListener('click', function() {
+  card.style.display = 'none';
 });
 
+const productBoxes = document.querySelectorAll('.product-box');
 
+productBoxes.forEach(function(productBox) {
+    const btn = productBox.querySelector('.btn_cart');
+    btn.addEventListener('click', function(event) {
+        var btnItem = event.target;
+        var product = btnItem.closest('.product-box');
+        var productImg = product.querySelector("img");
+        var productName = product.querySelector("h2").textContent;
+        var productPrice = product.querySelector("span").textContent
+
+        // console.log(productImg,productName,productPrice);
+        addcart(productImg,productName,productPrice)
+    });
+});
+
+function addcart(productImg,productName,productPrice) {
+  var img = document.createElement("img");
+    img.src = productImg;
+    img.style.width = "50px"; 
+    img.style.height = "auto";
+  var addtr = document.createElement("tr")
+  var trcontent = ' <tr><td style="display: flex; align-items: center;height: auto;width: 60px;margin-left: 5px;"><img src="'+productImg+'" alt="" style="width: 50px; height: auto;"><span style="white-space: nowrap;margin-left: 12px;">'+productName+'</span></td><td style="text-align: center;"><p><span>'+productPrice+'</span><sup>Đ</sup></p></td><td style="text-align: center;"><input style="width: 30px;"type="number" value="1" min="1"> </td><td style="cursor: pointer;text-align:center">Xóa</td></tr>'
+  addtr.innerHTML = trcontent
+  var cartTable = document.querySelector("tbody")
+  
+  cartTable.append(addtr)
+}
+
+  
+
+
+});
   animate.reveal(".nav");
   animate.reveal(".home-text", {origin:"left"});
   animate.reveal(".home-img", {origin:"bottom"});

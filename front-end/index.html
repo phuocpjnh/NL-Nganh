@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="shortcut icon" href="images/blackSheep.ico" type="image/x-icon" >
+
    
 </head>
 <body>
@@ -26,7 +27,12 @@
                     <a href="#review" class="nav-link">Đánh Giá</a>
                 </div>
                 <div class="navbar-icons">
-                    <a href="cart.html"></a><i class='bx bx-shopping-bag'></i></li></li>
+                    <div class="shopping">
+                        <a href="cart.html"> </a>
+                        <i id="showCardButton" class='bx bx-shopping-bag'></i>
+                        <!-- <span class="quality">0</span> -->
+                       
+                    </div>
                     <a href="#loginForm">
                         <i class='bx bx-user'></i> </li>
                     </a>
@@ -50,7 +56,49 @@
                 <div> Thử ngay </div>
                 <i class="bx bx-up-arrow-alt"></i>
             </a>
-           
+        </div>
+    </section>
+    <section class="shoping">
+         <div class="list"></div>
+        <div class="card">
+            <h1>Giỏ Hàng</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>SL</th>
+                        <th>Chọn</th>
+                        <br>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        
+                        <!-- <td style="display: flex; align-items: center;height: auto;width: 60px;margin-left: 5px;">
+                            <img src="images/product-1.png" alt="" style="width: 30px; height: auto;">
+                            <span style="white-space: nowrap;margin-left: 40px;text-align: center;">Coffee Hoà Tan</span>
+                        </td>
+                        <td style="text-align: center;"><p><span>50.000</span></p></td>
+                        <td style="text-align: center;"><input style="width: 30px;"type="number" value="1" min="1"> </td>
+                        <td style="cursor: pointer;text-align:center">Xóa</td>
+                    </tr>
+                    <tr>
+                        
+                        <td style="display: flex; align-items: center;height: auto;width: 60px;margin-left: 5px;">
+                            <img src="images/product-2.png" alt="" style="width: 30px; height: auto;">
+                            <span style="white-space: nowrap;margin-left: 40px;text-align: center;">Latte</span>
+                        </td>
+                        <td style="text-align: center;"><p><span>50.000</span></p></td>
+                        <td style="text-align: center;"><input style="width: 30px;"type="number" value="1" min="1"> </td>
+                        <td style="cursor: pointer;text-align:center">Xóa</td> -->
+                    </tr>
+                </tbody>
+            </table>
+            <div class="checkout">
+                <div class="total">0</div>
+                <div class="closeShoping">Close</div>
+            </div>
         </div>
     </section>
     <div class="modal" id="loginModal">
@@ -160,7 +208,7 @@
                 <h2>Coffee Hoà Tan</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button class="btn_cart"> <i class="bx bx-shopping-bag"></i></button>
                 </div>
             </div>
 
@@ -171,7 +219,7 @@
                 <h2>Coffee Đen</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button class="btn_cart"> <i class="bx bx-shopping-bag"></i></button>
                    
                 </div>
             </div>
@@ -183,7 +231,7 @@
                 <h2>Latte</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button class="btn_cart"> <i class="bx bx-shopping-bag"></i></button>
                 </div>
             </div>
 
@@ -194,7 +242,7 @@
                 <h2>Cappuccino</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button class="btn_cart"> <i class="bx bx-shopping-bag"></i></button>
                 </div>
             </div>
             
@@ -205,7 +253,7 @@
                 <h2>Espresso</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button class="btn_cart"> <i class="bx bx-shopping-bag"></i></button>
                 </div>
             </div>
 
@@ -216,7 +264,7 @@
                 <h2>Coffee Mocha</h2>
                 <div class="product-info">
                     <span>50.000</span>
-                    <i class="bx bx-shopping-bag"></i>
+                    <button class="btn_cart"> <i class="bx bx-shopping-bag"></i></button>
                 </div>
             </div>
         </div>
@@ -324,6 +372,7 @@
     </section>
 
     <section class="footer container">
+
         <div class="footer-box">
             <a href="#" class="logo">Black Sheep Coffee Dzịu</a>
             <div class="social">
