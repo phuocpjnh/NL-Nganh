@@ -3,64 +3,62 @@ const JwtService = require('../services/JwtService')
 
 const createUser = async (req, res) => {
     try {
-        
-        const {name, email, password, confirmPassword, phone} = req.body
+        const { name, email, password, confirmPassword, phone } = req.body
         const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
         const isCheckEmail = reg.test(email)
-        if (!name || !email || !password || !confirmPassword || !phone) {
+        if (!email || !password || !confirmPassword) {
             return res.status(200).json({
-                status: 'ERROR',
+                status: 'ERR',
                 message: 'The input is required'
             })
-        }  else if (!isCheckEmail) {
+        } else if (!isCheckEmail) {
             return res.status(200).json({
-                status: 'ERROR',
+                status: 'ERR',
                 message: 'The input is email'
             })
         } else if (password !== confirmPassword) {
             return res.status(200).json({
-                status: 'ERROR',
+                status: 'ERR',
                 message: 'The password is equal confirmPassword'
             })
-        } 
+        }
         const response = await UserService.createUser(req.body)
         return res.status(200).json(response)
     } catch (e) {
         return res.status(404).json({
-            message: e,
-            
+            message: e
         })
     }
 }
 
 const loginUser = async (req, res) => {
     try {
-        
-        const {name, email, password, confirmPassword, phone} = req.body
+        const { email, password } = req.body
         const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
         const isCheckEmail = reg.test(email)
-        if (!name || !email || !password || !confirmPassword || !phone) {
+        if (!email || !password) {
             return res.status(200).json({
-                status: 'ERROR',
-                message: 'Cần Phải Nhập'
+                status: 'ERR',
+                message: 'The input is required'
             })
-        }  else if (!isCheckEmail) {
+        } else if (!isCheckEmail) {
             return res.status(200).json({
-                status: 'ERROR',
-                message: 'Hãy Nhập Email'
+                status: 'ERR',
+                message: 'The input is email'
             })
-        } else if (password !== confirmPassword) {
-            return res.status(200).json({
-                status: 'ERROR',
-                message: 'Vui Lòng Nhập Lại Mật Khẩu'
-            })
-        } 
+        }
         const response = await UserService.loginUser(req.body)
-        return res.status(200).json(response)
+        const { refresh_token, ...newReponse } = response
+        res.cookie('refresh_token', refresh_token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'strict',
+            path: '/',
+        })
+        return res.status(200).json({...newReponse, refresh_token})
     } catch (e) {
         return res.status(404).json({
-            message: e,
-            
+            message: e
         })
     }
 }
@@ -93,7 +91,6 @@ const deleteUser = async (req, res) => {
                 message: 'The userId is required'
             })
         }
-        
         const response = await UserService.deleteUser(userId)
         return res.status(200).json(response)
     } catch (e) {
@@ -102,6 +99,25 @@ const deleteUser = async (req, res) => {
         })
     }
 }
+
+const deleteMany = async (req, res) => {
+    try {
+        const ids = req.body.ids
+        if (!ids) {
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The ids is required'
+            })
+        }
+        const response = await UserService.deleteManyUser(ids)
+        return res.status(200).json(response)
+    } catch (e) {
+        return res.status(404).json({
+            message: e
+        })
+    }
+}
+
 
 const getAllUser = async (req, res) => {
     try {
@@ -134,7 +150,7 @@ const getDetailsUser = async (req, res) => {
 
 const refreshToken = async (req, res) => {
     try {
-        const token = req.headers.token.split(' ')[1]
+        let token = req.headers.token.split(' ')[1]
         if (!token) {
             return res.status(200).json({
                 status: 'ERR',
@@ -149,6 +165,21 @@ const refreshToken = async (req, res) => {
         })
     }
 }
+
+
+const logoutUser = async (req, res) => {
+    try {
+        res.clearCookie('refresh_token')
+        return res.status(200).json({
+            status: 'OK',
+            message: 'Logout successfully'
+        })
+    } catch (e) {
+        return res.status(404).json({
+            message: e
+        })
+    }
+}
 module.exports = {
     createUser,
     loginUser,
@@ -156,5 +187,7 @@ module.exports = {
     deleteUser,
     getAllUser,
     getDetailsUser,
-    refreshToken
+    refreshToken,
+    logoutUser,
+    deleteMany
 }

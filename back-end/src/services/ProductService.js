@@ -61,30 +61,6 @@ const updateProduct = (id, data) => {
     })
 }
 
-const getDetailsProduct = (id) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const product = await Product.findOne({
-                _id: id
-            })
-            if (product === null) {
-                resolve({
-                    status: 'ERR',
-                    message: 'The product is not defined'
-                })
-            }
-
-            resolve({
-                status: 'OK',
-                message: 'SUCESS',
-                data: product
-            })
-        } catch (e) {
-            reject(e)
-        }
-    })
-}
-
 const deleteProduct = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -102,6 +78,44 @@ const deleteProduct = (id) => {
             resolve({
                 status: 'OK',
                 message: 'Delete product success',
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+const deleteManyProduct = (ids) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await Product.deleteMany({ _id: ids })
+            resolve({
+                status: 'OK',
+                message: 'Delete product success',
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+const getDetailsProduct = (id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const product = await Product.findOne({
+                _id: id
+            })
+            if (product === null) {
+                resolve({
+                    status: 'ERR',
+                    message: 'The product is not defined'
+                })
+            }
+
+            resolve({
+                status: 'OK',
+                message: 'SUCESS',
+                data: product
             })
         } catch (e) {
             reject(e)
@@ -172,11 +186,13 @@ const getAllType = () => {
         }
     })
 }
+
 module.exports = {
     createProduct,
     updateProduct,
     getDetailsProduct,
     deleteProduct,
     getAllProduct,
-    getAllType 
+    deleteManyProduct,
+    getAllType
 }
